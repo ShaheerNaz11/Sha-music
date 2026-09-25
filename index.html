@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamify - Music Player</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Top Bar -->
+        <header class="top-bar">
+            <button class="icon-btn"><i class="fa-solid fa-bars"></i></button>
+            <h1 class="logo">Listen Now</h1>
+            <div class="profile-avatar">
+                <img src="https://ui-avatars.com/api/?name=User&background=random" alt="Profile">
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Search Section -->
+            <div class="search-container">
+                <i class="fa-solid fa-search search-icon"></i>
+                <input type="text" id="searchInput" placeholder="Search songs, artists...">
+            </div>
+
+            <!-- Quick Picks (Horizontal) -->
+            <section class="section">
+                <h2 class="section-title">Quick Picks</h2>
+                <div class="quick-picks" id="quickPicksList">
+                    <!-- Rendered via JS -->
+                </div>
+            </section>
+
+            <!-- Recents (Vertical) -->
+            <section class="section">
+                <h2 class="section-title">Recents</h2>
+                <div class="song-list" id="recentsList">
+                    <!-- Rendered via JS -->
+                </div>
+            </section>
+
+            <div class="spacer"></div>
+        </main>
+
+        <!-- Mini Player (Floating Glassmorphism) -->
+        <div class="mini-player glass hidden" id="miniPlayer">
+            <img src="" alt="Cover" id="playerCover" class="player-cover">
+            <div class="player-info">
+                <h3 id="playerTitle">Title</h3>
+                <p id="playerArtist">Artist</p>
+            </div>
+            <div class="player-controls">
+                <button class="icon-btn sm" id="prevBtn"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="icon-btn play-btn" id="playPauseBtn"><i class="fa-solid fa-play"></i></button>
+                <button class="icon-btn sm" id="nextBtn"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="progress-container" id="progressContainer">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <i class="fa-solid fa-volume-high"></i>
+                <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav glass">
+            <a href="#" class="nav-item active"><i class="fa-solid fa-play"></i><span>Play</span></a>
+            <a href="#" class="nav-item"><i class="fa-regular fa-compass"></i><span>Explore</span></a>
+            <a href="admin.html" class="nav-item"><i class="fa-solid fa-lock"></i><span>Admin</span></a>
+            <a href="#" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Library</span></a>
+        </nav>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
