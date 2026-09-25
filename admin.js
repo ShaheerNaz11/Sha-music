@@ -14,7 +14,7 @@ let isEditing = false;
 
 // Fetch and display songs in admin panel
 async function fetchAdminSongs() {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('songs')
         .select('*')
         .order('created_at', { ascending: false });
@@ -62,7 +62,7 @@ songForm.addEventListener('submit', async (e) => {
 
     if (isEditing) {
         // Update existing song
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('songs')
             .update(songData)
             .eq('id', songIdInput.value);
@@ -71,7 +71,7 @@ songForm.addEventListener('submit', async (e) => {
         else alert('Song updated successfully!');
     } else {
         // Insert new song
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('songs')
             .insert([songData]);
 
@@ -85,7 +85,7 @@ songForm.addEventListener('submit', async (e) => {
 
 // Edit Song setup
 window.editSong = async (id) => {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('songs')
         .select('*')
         .eq('id', id)
@@ -127,7 +127,7 @@ function resetForm() {
 // Delete Song
 window.deleteSong = async (id) => {
     if (confirm('Are you sure you want to delete this song?')) {
-        const { error } = await supabase
+        const { error } = await supabaseClient
             .from('songs')
             .delete()
             .eq('id', id);

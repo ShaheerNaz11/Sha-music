@@ -21,7 +21,7 @@ const volumeSlider = document.getElementById('volumeSlider');
 
 // Fetch songs from Supabase
 async function fetchSongs() {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseClient
         .from('songs')
         .select('*')
         .order('created_at', { ascending: false });
